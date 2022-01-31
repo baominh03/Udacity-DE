@@ -77,7 +77,7 @@ Primary key: start_time
 7. ```er_diagrams.py```: to generate ER diagram
 
 # Environment set up (In case run locally)
-1. Set up python, psql to OS environment
+1. Set up python, postgresSQL
 2. Install psycopg2: ```pip install psycopg2```
 3. Install pandas: ```pip install pandas```
 4. Install ipython-sql to run test.ipynb locally: ```pip install ipython-sql```
