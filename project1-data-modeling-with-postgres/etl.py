@@ -119,8 +119,13 @@ def main():
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
+    # To run on udacity workspace
     process_data(cur, conn, filepath='data/song_data', func=process_song_file)
     process_data(cur, conn, filepath='data/log_data', func=process_log_file)
+
+    # To Run on local
+    # process_data(cur, conn, filepath='./project1-data-modeling-with-postgres/data/song_data', func=process_song_file)
+    # process_data(cur, conn, filepath='./project1-data-modeling-with-postgres/data/log_data/2018/11', func=process_log_file)
 
     conn.close()
 
