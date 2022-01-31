@@ -7,6 +7,7 @@ for studying
 - Completed project 1: **Jan 30, 2022**
 <details><summary>Click for Evidence</summary>
 <p>
+  
 ![image](https://user-images.githubusercontent.com/39981269/151736670-40ffa935-e71f-4ab2-8757-9d43a62c9196.png)
 
 ![review udacity com_](https://user-images.githubusercontent.com/39981269/151736579-cac74d42-4980-404f-a362-583dcb28c5d4.png)
