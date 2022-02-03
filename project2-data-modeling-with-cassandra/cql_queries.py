@@ -1,12 +1,12 @@
 # HANDLE CSV FILE
 
 ## To run on Udacity workspace
-# csv_file = 'event_datafile_new.csv'
-# event_folder = 'event_data'
+csv_file = 'event_datafile_new.csv'
+event_folder = 'event_data'
 
 ## To run on locally
-csv_file = './project2-data-modeling-with-cassandra/event_datafile_new.csv'
-event_folder = './project2-data-modeling-with-cassandra/event_data'
+# csv_file = './project2-data-modeling-with-cassandra/event_datafile_new.csv'
+# event_folder = './project2-data-modeling-with-cassandra/event_data'
 
 # DROP TABLES
 
