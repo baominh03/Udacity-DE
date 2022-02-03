@@ -56,6 +56,6 @@ We have provided you with a project template that takes care of all the imports 
 1. Config #HANDLE CSV path in ```test_cql.py``` to run on locally or udacity workspace
 2. Run ```cassandra``` (locally - window only. skip this step if you are running on udacity workspace)
 3.  ```python create_tables.py```
-4. ```python etl.py``` or run manually ```etl.ipynb``` file
+4. ```python etl.py``` or run manually ```Project_1B_ Project_Template``` file
 5. Run ```test_cql.ipynb``` to check up result
 
