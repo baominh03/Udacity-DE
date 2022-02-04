@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS artist_table (
     item_in_session int,
     first_name text, 
     last_name text,
-    PRIMARY KEY (user_id, session_id, item_in_session)
+    PRIMARY KEY ((user_id, session_id), item_in_session)
 );
 """)
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS user_table (
     user_id int, 
     first_name text, 
     last_name text,
-    PRIMARY KEY (song_title, user_id)
+    PRIMARY KEY ((song_title), user_id)
 );
 """)
 

@@ -66,6 +66,7 @@ def collect_event_datafile_to_csv():
             if (row[0] == ''):
                 continue
             writer.writerow((row[0], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[12], row[13], row[16]))
+    print('Wrote all records into new full event csv file')
 
 
 def process_csv_file(session):
@@ -83,9 +84,7 @@ def process_csv_file(session):
         csvreader = csv.reader(f)
         next(csvreader) # skip header
         for i, line in enumerate(csvreader, 2):
-    ## TO-DO: Assign the INSERT statements into the `query` variable
-            ## TO-DO: Assign which column element should be assigned for each column in the INSERT statement.
-            ## For e.g., to INSERT artist_name and user first_name, you would change the code below to `line[0], line[1]`
+            # insert records into tables
             session.execute( song_table_insert, (int(line[8]), int(line[3]), line[0], line[9], float(line[5])))  #Refer: https://knowledge.udacity.com/questions/529901
             print('{}/{} rows processed into song_table.'.format(i, num_rows))
             session.execute(artist_table_insert, (int(line[10]), int(line[8]), line[0], line[9], int(line[3]), line[1], line[4]))

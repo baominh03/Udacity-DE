@@ -5,36 +5,36 @@ We have provided you with a project template that takes care of all the imports 
 
 # Schema for Song Play Analysis
 
-## 1. Give me the artist, song title and song's length in the music app history that was heard 
+## 1. Give me the artist, song title and song's length in the music app history that was heard during sessionId = 338, and itemInSession = 4 
 ### song_table
-| Column          | Type  | Primary Key | Cluster Key | Explaination                              |
-| --------------- | ----- | ----------- | ----------- | ----------------------------------------- |
-| session_id      | INT   | Y           |             | where sessionId first => session_id is PK |
-| item_in_session | INT   |             | Y           | item_in_session is CK                     |
-| artist          | TEXT  |             |             |                                           |
-| song_title      | TEXT  |             |             |                                           |
-| length          | FLOAT |             |             |                                           |
+| Column          | Type  | Partition Key | Cluster Key | Explanation                |
+| --------------- | ----- | ------------- | ----------- | --------------------------- |
+| session_id      | INT   | Y             |             | fitering by session_id      |
+| item_in_session | INT   | Y             |             | fitering by item_in_session |
+| artist          | TEXT  |               |             |                             |
+| song_title      | TEXT  |               |             |                             |
+| length          | FLOAT |               |             |                             |
 
 ## 2. Give me only the following: name of artist, song (sorted by itemInSession) and user (first and last name) for userid = 10, sessionid = 182
 ### artist_table
-| Column          | Type | Primary Key | Cluster Key | Explaination                                     |
-| --------------- | ---- | ----------- | ----------- | ------------------------------------------------ |
-| user_id         | INT  | Y           |             | where userId first => user_id is PK              |
-| session_id      | INT  |             | Y           | session_id is CK                                 |
-| artist          | TEXT |             |             |                                                  |
-| song_title      | TEXT |             |             |                                                  |
-| item_in_session | INT  |             | Y           | sorted by itemInSession => item_in_session is CK |
-| first_name      | TEXT |             |             |                                                  |
-| last_name       | TEXT |             |             |                                                  |
+| Column          | Type | Partition Key | Cluster Key | Explanation                                     |
+| --------------- | ---- | ------------- | ----------- | ------------------------------------------------ |
+| user_id         | INT  | Y             |             | fitering by userId                               |
+| session_id      | INT  | Y             |             | fitering by session_id                           |
+| artist          | TEXT |               |             |                                                  |
+| song_title      | TEXT |               |             |                                                  |
+| item_in_session | INT  |               | Y           | sorted by itemInSession => item_in_session is CK |
+| first_name      | TEXT |               |             |                                                  |
+| last_name       | TEXT |               |             |                                                  |
 
 ## 3. Give me every user name (first and last) in my music app history who listened to the song 'All Hands Against His Own'
 ### user_table
-| Column     | Type | Primary Key | Cluster Key | Explaination                         |
-| ---------- | ---- | ----------- | ----------- | ------------------------------------ |
-| song_title | TEXT | Y           |             | where song first => song_title is PK |
-| user_id    | INT  |             | Y           | user_id is CK                        |
-| first_name | TEXT |             |             |                                      |
-| last_name  | TEXT |             |             |                                      |
+| Column     | Type | Partition Key | Cluster Key | Explanation                                   |
+| ---------- | ---- | ------------- | ----------- | ---------------------------------------------- |
+| song_title | TEXT | Y             |             | fitering by song => song_title is PK           |
+| user_id    | INT  |               | Y           | due to song is not unique => add user_id is CK |
+| first_name | TEXT |               |             |                                                |
+| last_name  | TEXT |               |             |                                                |
 
 
 # Explanation of the files in the repository
