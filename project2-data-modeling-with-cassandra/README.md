@@ -1,5 +1,5 @@
 # Project 2: Data Modeling on Apache Cassandra
-n this project, you'll apply what you've learned on data modeling with Apache Cassandra and complete an ETL pipeline using Python. To complete the project, you will need to model your data by creating tables in Apache Cassandra to run queries. You are provided with part of the ETL pipeline that transfers data from a set of CSV files within a directory to create a streamlined CSV file to model and insert data into Apache Cassandra tables.
+In this project, you'll apply what you've learned on data modeling with Apache Cassandra and complete an ETL pipeline using Python. To complete the project, you will need to model your data by creating tables in Apache Cassandra to run queries. You are provided with part of the ETL pipeline that transfers data from a set of CSV files within a directory to create a streamlined CSV file to model and insert data into Apache Cassandra tables.
 
 We have provided you with a project template that takes care of all the imports and provides a structure for ETL pipeline you'd need to process this data.
 
@@ -56,6 +56,6 @@ We have provided you with a project template that takes care of all the imports 
 1. Config #HANDLE CSV path in ```test_cql.py``` to run on locally or udacity workspace
 2. Run ```cassandra``` (locally - window only. skip this step if you are running on udacity workspace)
 3.  ```python create_tables.py```
-4. ```python etl.py``` or run manually ```Project_1B_ Project_Template``` file
+4. ```python etl.py``` or run manually ```Project_1B_ Project_Template.ipynb``` file
 5. Run ```test_cql.ipynb``` to check up result
 
