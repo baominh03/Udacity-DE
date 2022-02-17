@@ -30,10 +30,9 @@ DWH_DB_PASSWORD = config.get("DWH", "DWH_DB_PASSWORD")
 DWH_PORT = config.get("DWH", "DWH_PORT")
 
 DELAY = int(config.get("DELAY", "DELAY_TIME"))
+TIMEOUT = int(config.get("DELAY", "TIMEOUT"))
 
 DWH_IAM_ROLE_NAME = config.get("DWH", "DWH_IAM_ROLE_NAME")
-
-(DWH_DB_USER, DWH_DB_PASSWORD, DWH_DB)
 
 
 def create_clients():
@@ -153,11 +152,10 @@ def create_cluster(role_arn, redshift):
         my_cluster_props = redshift.describe_clusters(
             ClusterIdentifier=DWH_CLUSTER_IDENTIFIER)['Clusters'][0]
         cluster_status = my_cluster_props['ClusterStatus']
-        if time()-t0 > 300:
+        if time()-t0 > TIMEOUT:
             raise ValueError(
-                "Redshift creation time is too long, please double check to avoid wasting money")
-    loadTime = time()-t0
-    print("=== REDSHIFT CLUSTER CREATED in: {0:.2f} sec\n".format(loadTime))
+                "Redshift creation time is too long, please double check to avoid wasting money in: {0:.2f} sec\n".format(time()-t0))
+    print("=== REDSHIFT CLUSTER CREATED in: {0:.2f} sec\n".format(time()-t0))
     print("ClusterStatus: [{}]\n".format(cluster_status))
     DWH_ENDPOINT = my_cluster_props['Endpoint']['Address']
     DWH_ROLE_ARN = my_cluster_props['IamRoles'][0]['IamRoleArn']

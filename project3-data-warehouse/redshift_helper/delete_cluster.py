@@ -17,6 +17,7 @@ DWH_CLUSTER_IDENTIFIER = config.get("DWH", "dwh_cluster_identifier")
 DWH_IAM_ROLE_NAME = config.get("DWH", "DWH_IAM_ROLE_NAME")
 
 DELAY = int(config.get("DELAY", "DELAY_TIME"))
+TIMEOUT = int(config.get("DELAY", "TIMEOUT"))
 
 
 def create_clients():
@@ -64,14 +65,13 @@ def delete_cluster(redshift):
             my_cluster_props = redshift.describe_clusters(
                 ClusterIdentifier=DWH_CLUSTER_IDENTIFIER)['Clusters'][0]
             cluster_status = my_cluster_props['ClusterStatus']
-            if time()-t0 > 300:
+            if time()-t0 > TIMEOUT:
                 raise ValueError(
-                    "Redshift termination time is too long, please double check to avoid wasting money")
+                    "Redshift termination time is too long, please double check to avoid wasting money in: {0:.2f} sec\n".format(time()-t0))
     except redshift.exceptions.ClusterNotFoundFault as e:
-        loadTime = time()-t0
         print(e)
         print(
-            "=== REDSHIFT CLUSTER REMOVED in: {0:.2f} sec\n".format(loadTime))
+            "=== REDSHIFT CLUSTER REMOVED in: {0:.2f} sec\n".format(time()-t0))
 
 
 def delete_iam_role(iam):
@@ -100,4 +100,4 @@ if __name__ == "__main__":
         
     iam, redshift = create_clients()
     delete_cluster(redshift)
-    delete_iam_role(iam)
+    # delete_iam_role(iam)
