@@ -128,7 +128,6 @@ time_table_create = ("""
 # refer: https://knowledge.udacity.com/questions/514188
 # to resolve issue: psycopg2.errors.InternalError_: Load into table 'staging_songs' failed.  Check 'stl_load_errors' system table for details.
 staging_events_copy = ("""
-SET search_path TO sparkifyDWH;
 COPY staging_events FROM {}
 CREDENTIALS 'aws_iam_role={}'
 COMPUPDATE OFF region 'us-west-2'
