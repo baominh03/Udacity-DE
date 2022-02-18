@@ -14,7 +14,7 @@ config.read_file(open(config_file_path))
 KEY = config.get('AWS', 'KEY')
 SECRET = config.get('AWS', 'SECRET')
 DWH_CLUSTER_IDENTIFIER = config.get("DWH", "dwh_cluster_identifier")
-DWH_IAM_ROLE_NAME = config.get("DWH", "DWH_IAM_ROLE_NAME")
+DWH_IAM_ROLE_NAME = config.get("IAM_ROLE", "DWH_IAM_ROLE_NAME")
 
 DELAY = int(config.get("DELAY", "DELAY_TIME"))
 TIMEOUT = int(config.get("DELAY", "TIMEOUT"))
@@ -93,11 +93,11 @@ if __name__ == "__main__":
 
     # To clear value of DWH_ENDPOINT and DWH_ROLE_ARN in dwh.cfg file
     config.read('./project3-data-warehouse/dwh.cfg')
-    config.set('DWH', 'DWH_ENDPOINT', '<autofill after running create_cluster.py>')
+    config.set('CLUSTER', 'HOST', '<autofill after running create_cluster.py>')
     config.set('IAM_ROLE', 'DWH_ROLE_ARN', '<autofill after running create_cluster.py>')
     with open(config_file_path, 'w') as configfile:
         config.write(configfile)
         
     iam, redshift = create_clients()
     delete_cluster(redshift)
-    # delete_iam_role(iam)
+    delete_iam_role(iam)

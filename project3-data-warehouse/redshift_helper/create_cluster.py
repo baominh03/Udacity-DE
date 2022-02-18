@@ -24,15 +24,15 @@ DWH_NUM_NODES = config.get("DWH", "DWH_NUM_NODES")
 DWH_NODE_TYPE = config.get("DWH", "DWH_NODE_TYPE")
 
 DWH_CLUSTER_IDENTIFIER = config.get("DWH", "DWH_CLUSTER_IDENTIFIER")
-DWH_DB = config.get("DWH", "DWH_DB")
-DWH_DB_USER = config.get("DWH", "DWH_DB_USER")
-DWH_DB_PASSWORD = config.get("DWH", "DWH_DB_PASSWORD")
-DWH_PORT = config.get("DWH", "DWH_PORT")
+DWH_DB = config.get("CLUSTER", "DB_NAME")
+DWH_DB_USER = config.get("CLUSTER", "DB_USER")
+DWH_DB_PASSWORD = config.get("CLUSTER", "DB_PASSWORD")
+DWH_PORT = config.get("CLUSTER", "DB_PORT")
 
 DELAY = int(config.get("DELAY", "DELAY_TIME"))
 TIMEOUT = int(config.get("DELAY", "TIMEOUT"))
 
-DWH_IAM_ROLE_NAME = config.get("DWH", "DWH_IAM_ROLE_NAME")
+DWH_IAM_ROLE_NAME = config.get("IAM_ROLE", "DWH_IAM_ROLE_NAME")
 
 
 def create_clients():
@@ -163,6 +163,14 @@ def create_cluster(role_arn, redshift):
 
 
 def open_incoming_tcp_port(my_cluster_props, ec2):
+    """
+    To open incoming tcp port on EC2
+
+    INPUTS: 
+    * my_cluster_props
+    * ec2 client
+
+    """
     try:
         vpc = ec2.Vpc(id=my_cluster_props['VpcId'])
         defaultSg = list(vpc.security_groups.all())[0]
@@ -188,7 +196,7 @@ if __name__ == "__main__":
 
     # write DWH_ENDPOINT,  DWH_ROLE_ARN to dwh.cfg
     config.read('./project3-data-warehouse/dwh.cfg')
-    config.set('DWH', 'DWH_ENDPOINT', DWH_ENDPOINT)
+    config.set('CLUSTER', 'HOST', DWH_ENDPOINT)
     config.set('IAM_ROLE', 'DWH_ROLE_ARN', DWH_ROLE_ARN)
     with open(config_file_path, 'w') as configfile:
         config.write(configfile)
