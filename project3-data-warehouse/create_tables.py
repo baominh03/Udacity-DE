@@ -30,6 +30,7 @@ def main():
     print('=== Connected redshift successfully ===\nhost={}\ndbname={}\nuser={}\npassword={}\nport={}'.format(*config['CLUSTER'].values()))
 
     drop_tables(cur, conn)
+    
     create_tables(cur, conn)
 
     conn.close()

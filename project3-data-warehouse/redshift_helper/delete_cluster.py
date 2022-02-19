@@ -91,7 +91,7 @@ def delete_iam_role(iam):
 
 if __name__ == "__main__":
 
-    # To clear value of DWH_ENDPOINT and DWH_ROLE_ARN in dwh.cfg file
+    # To clear value of HOST and DWH_ROLE_ARN in dwh.cfg file
     config.read('./project3-data-warehouse/dwh.cfg')
     config.set('CLUSTER', 'HOST', '<autofill after running create_cluster.py>')
     config.set('IAM_ROLE', 'DWH_ROLE_ARN', '<autofill after running create_cluster.py>')

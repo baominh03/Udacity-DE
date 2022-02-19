@@ -20,16 +20,16 @@ DWH_ROLE_ARN = config.get("IAM_ROLE", "DWH_ROLE_ARN")
 
 staging_events_table_drop = "DROP TABLE IF EXISTS staging_events"
 staging_songs_table_drop = "DROP TABLE IF EXISTS staging_songs"
-songplay_table_drop = "DROP TABLE IF EXISTS songplay_table"
-user_table_drop = "DROP TABLE IF EXISTS user_table"
-song_table_drop = "DROP TABLE IF EXISTS song_table"
-artist_table_drop = "DROP TABLE IF EXISTS artist_table"
-time_table_drop = "DROP TABLE IF EXISTS time_table"
+songplay_table_drop = "DROP TABLE IF EXISTS songplay"
+user_table_drop = "DROP TABLE IF EXISTS users"
+song_table_drop = "DROP TABLE IF EXISTS songs"
+artist_table_drop = "DROP TABLE IF EXISTS artists"
+time_table_drop = "DROP TABLE IF EXISTS time"
 
 # CREATE TABLES
 
 staging_events_table_create = ("""
-    CREATE TABLE staging_events (
+    CREATE TABLE IF NOT EXISTS staging_events (
         artist VARCHAR,
         auth VARCHAR,
         firstName VARCHAR,
@@ -52,7 +52,7 @@ staging_events_table_create = ("""
 """)
 
 staging_songs_table_create = ("""
-    CREATE TABLE staging_songs (
+    CREATE TABLE IF NOT EXISTS staging_songs (
         num_songs INT,
         artist_id VARCHAR(18),
         artist_latitude FLOAT,
@@ -68,7 +68,7 @@ staging_songs_table_create = ("""
 
 # The SERIAL command in Postgres is not supported in Redshift. The equivalent in redshift is IDENTITY(0,1)
 songplay_table_create = ("""
-    CREATE TABLE songplay_table (
+    CREATE TABLE IF NOT EXISTS songplay (
         songplay_id INTEGER  IDENTITY(0,1),
         start_time TIMESTAMP NOT NULL sortkey distkey,
         user_id INT NOT NULL,
@@ -82,7 +82,7 @@ songplay_table_create = ("""
 """)
 
 user_table_create = ("""
-    CREATE TABLE user_table (
+    CREATE TABLE IF NOT EXISTS users (
         user_id INT NOT NULL sortkey,
         first_name VARCHAR,
         last_name VARCHAR,
@@ -92,7 +92,7 @@ user_table_create = ("""
 """)
 
 song_table_create = (""" 
-    CREATE TABLE song_table (
+    CREATE TABLE IF NOT EXISTS songs (
         song_id VARCHAR(18) NOT NULL sortkey,
         song_title VARCHAR NOT NULL,
         artist_id VARCHAR(18) NOT NULL,
@@ -102,7 +102,7 @@ song_table_create = ("""
 """)
 
 artist_table_create = ("""
-    CREATE TABLE artist_table (
+    CREATE TABLE IF NOT EXISTS artists (
         artist_id VARCHAR(18) NOT NULL sortkey,
         artist_name VARCHAR NOT NULL,
         artist_location VARCHAR NOT NULL,
@@ -112,7 +112,7 @@ artist_table_create = ("""
 """)
 
 time_table_create = ("""
-    CREATE TABLE time_table (
+    CREATE TABLE IF NOT EXISTS time (
         start_time timestamp NOT NULL distkey sortkey,
         hour INT NOT NULL,
         day INT NOT NULL,
@@ -146,11 +146,11 @@ FORMAT AS JSON 'auto'
 """).format(SONG_DATA, DWH_ROLE_ARN)  # Refer COPY from 'auto' format: https://docs.aws.amazon.com/redshift/latest/dg/copy-usage_notes-copy-from-json.html
 
 # FINAL TABLES
+## Refer ON CONFLICT in redshift by DISTINCT: https://knowledge.udacity.com/questions/801480
 songplay_table_insert = ("""
-    INSERT INTO songplay_table (start_time, user_id, level, song_id, artist_id,  session_id, user_agent, location )
-                       
-    SELECT (timestamp 'epoch' + ts/1000 * interval '1 second') AS start_time,
-        userId user_id, level, song_id, artist_id, sessionId session_id, userAgent user_agent, location
+    INSERT INTO songplay (start_time, user_id, level, song_id, artist_id,  session_id, user_agent, location )                
+    SELECT DISTINCT timestamp 'epoch' + ts/1000 * interval '1 second',
+        userId, level, song_id, artist_id, sessionId, userAgent, location
     FROM staging_songs ss 
     JOIN staging_events se ON (ss.artist_name = se.artist
                                AND ss.title = se.song)
@@ -158,50 +158,38 @@ songplay_table_insert = ("""
 """)  # Refer how to convert timestamp to datetime in redshift: https://knowledge.udacity.com/questions/154533
 
 user_table_insert = ("""
-    INSERT INTO user_table (user_id, first_name, last_name, gender, level)
-
-    SELECT userId as user_id, firstName as first_name, lastName as last_name, gender, level 
+    INSERT INTO users (user_id, first_name, last_name, gender, level)
+    SELECT DISTINCT(userId), firstName, lastName, gender, level 
     FROM staging_events
-    ON CONFLICT (user_id)
-    DO UPDATE SET level = excluded.level
+    WHERE page ='NextSong'
 """)
 
 song_table_insert = ("""
-    INSERT INTO song_table (song_id, song_title, artist_id, year, duration)
-
-    SELECT song_id, title as song_title, artist_id, year, duration
+    INSERT INTO songs (song_id, song_title, artist_id, year, duration)
+    SELECT DISTINCT(song_id), title, artist_id, year, duration
     FROM staging_songs
-    ON CONFLICT (song_id) DO NOTHING
 """)
 
 artist_table_insert = ("""
-    INSERT INTO artist_table (artist_id, name, artist_location, artist_latitude, artist_longitude)
-
-    SELECT artist_id, artist_name, location as artist_location, latitude as artist_latitude, longitude as artist_longitude
+    INSERT INTO artists (artist_id, artist_name, artist_location, artist_latitude, artist_longitude)
+    SELECT DISTINCT(artist_id), artist_name, artist_location, artist_latitude, artist_longitude
     FROM staging_songs
-    ON CONFLICT (artist_id) DO NOTHING
 """)
 
 time_table_insert = ("""
-    INSERT INTO time_table (start_time, hour, day, week, month, year, weekday)
-
-    SELECT start_time,
-    EXTRACT(hour  from s.start_time) as hour,
-    EXTRACT(day   from s.start_time) as day,
-    EXTRACT(week  from s.start_time) as week,
-    EXTRACT(month from s.start_time) as month,
-    EXTRACT(year  from s.start_time) as year,
-    EXTRACT(dow   from s.start_time) as weekday
-    FROM songplay_table
-    ON CONFLICT (start_time) DO NOTHING
+    INSERT INTO time (start_time, hour, day, week, month, year, weekday)
+    SELECT DISTINCT(start_time),
+    EXTRACT(hour  from start_time) as hour,
+    EXTRACT(day   from start_time) as day,
+    EXTRACT(week  from start_time) as week,
+    EXTRACT(month from start_time) as month,
+    EXTRACT(year  from start_time) as year,
+    EXTRACT(dow   from start_time) as weekday
+    FROM songplay
 """)
 
 # QUERY LISTS
-
-create_table_queries = [staging_events_table_create, staging_songs_table_create,
-                        user_table_drop, song_table_drop, artist_table_drop, time_table_drop, songplay_table_drop]
-drop_table_queries = [staging_events_table_drop, staging_songs_table_drop,
-                      user_table_drop, song_table_drop, artist_table_drop, time_table_drop, songplay_table_drop]
-copy_table_queries = [staging_songs_copy, staging_events_copy]
-insert_table_queries = [user_table_insert, time_table_insert,
-                        song_table_insert, artist_table_insert, songplay_table_insert]
+create_table_queries = [staging_events_table_create, staging_songs_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
+drop_table_queries = [staging_events_table_drop, staging_songs_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
+copy_table_queries = [staging_events_copy, staging_songs_copy]
+insert_table_queries = [songplay_table_insert, user_table_insert, song_table_insert, artist_table_insert, time_table_insert]

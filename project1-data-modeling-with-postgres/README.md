@@ -11,7 +11,7 @@ In this project, We'll apply what we've learned on data modeling with Postgres a
 ### songplay tables
 Primary key: songplay_id
 Foreign key: start_time, user_id, song_id, artist_id
-| Column      | Type        | Nullable | Explaination                                                                                  |
+| Column      | Type        | Nullable | Explanation                                                                                  |
 | ----------- | ----------- | -------- | --------------------------------------------------------------------------------------------- |
 | songplay_id | SERIAL      |          | In Log dataset, there are no songplay_id => songplay_id should auto increment (SERIAL)        |
 | start_time  | TIMESTAMP   | not null | "registration" log dataset                                                                    |
@@ -27,7 +27,7 @@ Foreign key: start_time, user_id, song_id, artist_id
 
 ### users tables
 Primary key: user_id
-| Column     | Type       | Nullable | Explaination            |
+| Column     | Type       | Nullable | Explanation            |
 | ---------- | ---------- | -------- | ----------------------- |
 | user_id    | INT        | not null | "userId" log datase     |
 | first_name | VARCHAR    | not null | "firstName" log dataset |
@@ -37,7 +37,7 @@ Primary key: user_id
 
 ### songs tables
 Primary key: song_id
-| Column    | Type        | Nullable | Explaination                                 |
+| Column    | Type        | Nullable | Explanation                                 |
 | --------- | ----------- | -------- | -------------------------------------------- |
 | song_id   | VARCHAR(18) | not null | "song_id" song dataset (limit 18 characters) |
 | title     | VARCHAR     | not null | "title" song dataset                         |
@@ -47,7 +47,7 @@ Primary key: song_id
 
 ### artists tables
 Primary key: artist_id
-| Column     | Type        | Nullable | Explaination                                   |
+| Column     | Type        | Nullable | Explanation                                   |
 | ---------- | ----------- | -------- | ---------------------------------------------- |
 | artist_id  | VARCHAR(18) | not null | "artist_id" song dataset (limit 18 characters) |
 | name       | VARCHAR     | not null | "artist_name" song dataset                     |
@@ -57,7 +57,7 @@ Primary key: artist_id
 
 ### time tables
 Primary key: start_time
-| Column     | Type      | Nullable | Explaination                                                 |
+| Column     | Type      | Nullable | Explanation                                                 |
 | ---------- | --------- | -------- | ------------------------------------------------------------ |
 | start_time | TIMESTAMP | not null | "ts" log dataset                                             |
 | hour       | INT       | not null | break down from start_time                                   |

@@ -2,10 +2,10 @@
 
 #add IF EXIST following as Project Rubric
 songplay_table_drop = "DROP TABLE IF EXISTS songplay"
-user_table_drop = "DROP TABLE IF EXISTS user_table"
-song_table_drop = "DROP TABLE IF EXISTS song_table"
-artist_table_drop = "DROP TABLE IF EXISTS artist_table"
-time_table_drop = "DROP TABLE IF EXISTS time_table"
+user_table_drop = "DROP TABLE IF EXISTS songplay"
+song_table_drop = "DROP TABLE IF EXISTS songs"
+artist_table_drop = "DROP TABLE IF EXISTS artists"
+time_table_drop = "DROP TABLE IF EXISTS time"
 
 # CREATE TABLES
 

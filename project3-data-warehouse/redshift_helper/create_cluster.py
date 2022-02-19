@@ -194,7 +194,7 @@ if __name__ == "__main__":
         role_arn, redshift)
     open_incoming_tcp_port(my_cluster_props, ec2)
 
-    # write DWH_ENDPOINT,  DWH_ROLE_ARN to dwh.cfg
+    # write HOST,  DWH_ROLE_ARN to dwh.cfg
     config.read('./project3-data-warehouse/dwh.cfg')
     config.set('CLUSTER', 'HOST', DWH_ENDPOINT)
     config.set('IAM_ROLE', 'DWH_ROLE_ARN', DWH_ROLE_ARN)
