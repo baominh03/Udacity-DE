@@ -36,7 +36,7 @@ staging_songs_table_create = sql_queries_dist.staging_songs_table_create
 
 songplay_table_create = ("""
 CREATE TABLE IF NOT EXISTS songplay (
-    songplay_id INTEGER  IDENTITY(0,1) PRIMARY KEY,
+    songplay_id INTEGER  IDENTITY(0,1),
     start_time TIMESTAMP NOT NULL,
     user_id INT NOT NULL,
     level VARCHAR(4) NOT NULL,
@@ -44,17 +44,13 @@ CREATE TABLE IF NOT EXISTS songplay (
     artist_id VARCHAR(18) NOT NULL,
     session_id INT NOT NULL,
     location VARCHAR NOT NULL,
-    user_agent VARCHAR NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES users(user_id),
-    FOREIGN KEY(song_id) REFERENCES songs(song_id),
-    FOREIGN KEY(artist_id) REFERENCES artists(artist_id),
-    FOREIGN KEY(start_time) REFERENCES time(start_time)
+    user_agent VARCHAR NOT NULL
 );
 """)
 
 user_table_create = ("""
 CREATE TABLE IF NOT EXISTS users (
-    user_id INT PRIMARY KEY NOT NULL,
+    user_id INT NOT NULL,
     first_name VARCHAR,
     last_name VARCHAR,
     gender CHAR(1),
@@ -64,7 +60,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 song_table_create = ("""
 CREATE TABLE IF NOT EXISTS songs (
-    song_id VARCHAR(18) PRIMARY KEY NOT NULL,
+    song_id VARCHAR(18) NOT NULL,
     song_title VARCHAR NOT NULL,
     artist_id VARCHAR(18) NOT NULL,
     year INT NOT NULL,
@@ -74,7 +70,7 @@ CREATE TABLE IF NOT EXISTS songs (
 
 artist_table_create = ("""
 CREATE TABLE IF NOT EXISTS artists (
-    artist_id VARCHAR(18) PRIMARY KEY NOT NULL,
+    artist_id VARCHAR(18) NOT NULL,
     artist_name VARCHAR NOT NULL,
     artist_location VARCHAR,
     artist_latitude FLOAT,
@@ -84,7 +80,7 @@ CREATE TABLE IF NOT EXISTS artists (
 
 time_table_create = ("""
 CREATE TABLE IF NOT EXISTS time (
-    start_time TIMESTAMP PRIMARY KEY NOT NULL,
+    start_time TIMESTAMP NOT NULL,
     hour INT NOT NULL,
     day INT NOT NULL,
     week INT NOT NULL,

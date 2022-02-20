@@ -41,7 +41,7 @@ staging_events_table_create = ("""
         location VARCHAR,
         method VARCHAR,
         page VARCHAR,
-        registration FLOAT, 
+        registration VARCHAR, 
         sessionId INT,
         song VARCHAR,
         status INT,
