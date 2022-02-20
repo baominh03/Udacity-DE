@@ -36,6 +36,7 @@ for studying
 - Completed project 3: **Feb 20, 2022** 
     <details><summary>Click for Evidence</summary>
     <p>
+    ![image](https://user-images.githubusercontent.com/39981269/154826867-95df0dbf-0ee2-4ccc-b274-5954c4fa2e81.png)
 
     ![image](https://user-images.githubusercontent.com/39981269/154826796-b74c584f-60e2-4135-814e-bb276bff95d6.png)
 
