@@ -2,7 +2,7 @@
 for studying
 
 ## Start from Jan 28,2022
-![image](https://user-images.githubusercontent.com/39981269/152457639-17ebd08f-677a-4f19-b4ee-872ee4c2d683.png)
+![image](https://user-images.githubusercontent.com/39981269/154826762-cb1991ec-2ea4-48de-b0cb-16ef81843826.png)
 
 - Completed project 1: **Jan 30, 2022** 
     <details><summary>Click for Evidence</summary>
@@ -29,6 +29,18 @@ for studying
 
     - Code review
     ![review udacity com_ (4)](https://user-images.githubusercontent.com/39981269/152458022-82285680-30b2-4064-88ea-de82667b4e7e.png)
+    
+    </p>
+    </details>
+    
+- Completed project 3: **Feb 20, 2022** 
+    <details><summary>Click for Evidence</summary>
+    <p>
+
+    ![image](https://user-images.githubusercontent.com/39981269/154826796-b74c584f-60e2-4135-814e-bb276bff95d6.png)
+
+    - Code review
+    ![review udacity com__utm_campaign=ret_000_auto_ndxxx_submission-reviewed utm_source=blueshift utm_medium=email utm_content=trigger_enterprise_eng_3001_submission_reviewed bsft_clkid=2fe7e14a-319e-42ae-a2a9-89ae34a8](https://user-images.githubusercontent.com/39981269/154826779-660ea9b0-3b2a-4ef9-a1cf-6ea4bb7469d9.png)
 
     </p>
     </details>
