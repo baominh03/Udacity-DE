@@ -2,7 +2,7 @@
 for studying
 
 ## Start from Jan 28,2022
-![image](https://user-images.githubusercontent.com/39981269/154826762-cb1991ec-2ea4-48de-b0cb-16ef81843826.png)
+![image](https://user-images.githubusercontent.com/39981269/154826817-fd7dca29-6695-4dc1-b713-1bb4dc76e170.png)
 
 - Completed project 1: **Jan 30, 2022** 
     <details><summary>Click for Evidence</summary>
