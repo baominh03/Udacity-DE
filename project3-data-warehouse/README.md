@@ -19,7 +19,7 @@ In this project, you'll apply what you've learned on data warehouses and AWS to 
 4. Install ipython-sql to run test.ipynb locally: ```pip install ipython-sql```
 5. install boto3: ```pip install boto3```
 6. install matplotlib: ```pip install matplotlib```
-7. For jupyter notebook: change kernelto use python version above 3.
+7. For jupyter notebook: change kernel to use python version above 3.
 
 # Run scripts
 
