@@ -23,9 +23,11 @@ In this project, you'll apply what you've learned on data warehouses and AWS to 
 
 # Run scripts
 
-1. Run python file ```redshift_helper/create_cluster.py```
-2. ```python create_table.py```
-3. ```python etl.py```
-4. Run ```analytic.ipynb```
-5. Run python file ```redshift_helper/delete_cluster.py```
+1. Create/use IAM user with attach policy ```AmazonRedshiftFullAccess```, ```AmazonS3ReadOnlyAccess```, ```AmazonS3ReadOnlyAccess ```
+2. Manually input AWS  KEY and AWS Secret KEY into ```dwh.cfg``` 
+3. Run python file ```redshift_helper/create_cluster.py```
+4. ```python create_table.py```
+5. ```python etl.py```
+6. Run ```analytic.ipynb```
+7. Run python file ```redshift_helper/delete_cluster.py```
 

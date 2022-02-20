@@ -91,10 +91,15 @@ def delete_iam_role(iam):
 
 if __name__ == "__main__":
 
-    # To clear value of HOST and DWH_ROLE_ARN in dwh.cfg file
-    config.read('./project3-data-warehouse/dwh.cfg')
+    # To clear value of HOST and DWH_ROLE_ARN, load_time_nodist, load_time_dist in dwh.cfg file
+    config.read(config_file_path)
     config.set('CLUSTER', 'HOST', '<autofill after running create_cluster.py>')
     config.set('IAM_ROLE', 'DWH_ROLE_ARN', '<autofill after running create_cluster.py>')
+
+    config.set('NODIST', 'LOAD_TIME_STAGING_EVENTS', '<autofill after running etl.py>')
+    config.set('NODIST', 'LOAD_TIME_STAGING_SONGS', '<autofill after running etl.py>')
+    config.set('DIST', 'LOAD_TIME_STAGING_EVENTS', '<autofill after running etl.py>')
+    config.set('DIST', 'LOAD_TIME_STAGING_SONGS', '<autofill after running etl.py>')
     with open(config_file_path, 'w') as configfile:
         config.write(configfile)
         

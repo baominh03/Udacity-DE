@@ -195,7 +195,7 @@ if __name__ == "__main__":
     open_incoming_tcp_port(my_cluster_props, ec2)
 
     # write HOST,  DWH_ROLE_ARN to dwh.cfg
-    config.read('./project3-data-warehouse/dwh.cfg')
+    config.read(config_file_path)
     config.set('CLUSTER', 'HOST', DWH_ENDPOINT)
     config.set('IAM_ROLE', 'DWH_ROLE_ARN', DWH_ROLE_ARN)
     with open(config_file_path, 'w') as configfile:
