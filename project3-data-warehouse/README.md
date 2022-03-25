@@ -23,7 +23,7 @@ In this project, you'll apply what you've learned on data warehouses and AWS to 
 
 # Run scripts
 
-1. Create/use IAM user with attach policy ```AmazonRedshiftFullAccess```, ```AmazonS3ReadOnlyAccess```, ```AmazonS3ReadOnlyAccess ```
+1. Create/use IAM user with attach policy ```AmazonRedshiftFullAccess```, ```AmazonS3ReadOnlyAccess```
 2. Manually input AWS  KEY and AWS Secret KEY into ```dwh.cfg``` 
 3. Run python file ```redshift_helper/create_cluster.py```
 4. ```python create_table.py```
