@@ -81,7 +81,7 @@ Primary key: start_time
 1. Create/use IAM user with attach policy ```AmazonS3FullAccess```
 2. Manually input AWS  KEY and AWS Secret KEY into ```dwh.cfg``` 
 3. ```python s3_helper/create_s3.py```
-4. ```python etl.py``` wait for loading (around 30 mins)
+4. ```python etl.py``` wait for loading (around 1 hour)
 5. run  ```query.ipynb``` file to check the result
 6. ```python s3_helper/delete_s3.py```
 
