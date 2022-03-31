@@ -7,9 +7,9 @@ from time import time
 from time import sleep
 
 # Run local
-config_file_path = './project5-data-pipelines/dwh_p.cfg'
+# config_file_path = './project5-data-pipelines/dwh_p.cfg'
 # Run on Udacity workspace
-# config_file_path = 'dwh_p.cfg'
+config_file_path = 'dwh_p.cfg'
 
 config = configparser.ConfigParser()
 config.read_file(open(config_file_path))

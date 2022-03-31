@@ -28,7 +28,7 @@ S3_LOG_JSONPATH = config.get("S3", "S3_LOG_JSONPATH")
 default_args = {
     'owner': 'udacity',
     'start_date': datetime(2022, 3, 30),
-    'end_date': datetime(2022, 4, 30),
+    'end_date': datetime(2022, 4, 10),
     'retries': 3,
     'retry_delay': timedelta(minutes=5),
     'catchup': False,

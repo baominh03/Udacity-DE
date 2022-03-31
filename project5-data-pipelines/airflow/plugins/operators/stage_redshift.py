@@ -2,7 +2,7 @@ from airflow.hooks.postgres_hook import PostgresHook
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
 from airflow.contrib.hooks.aws_hook import AwsHook
-
+ 
 class StageToRedshiftOperator(BaseOperator):
     ui_color = '#358140'
 
@@ -46,10 +46,12 @@ class StageToRedshiftOperator(BaseOperator):
         aws_hook = AwsHook(self.aws_credentials_id)
         credentials = aws_hook.get_credentials()
         redshift = PostgresHook(postgres_conn_id=self.redshift_conn_id)
+        self.log.info("Redshift connection created.")
 
-        self.log.info("=== Copying data from S3 to Redshift ===")
+        self.log.info("=== Preparing data from S3 to Redshift ===")
         rendered_key = self.s3_key.format(**context)
         s3_path = "s3://{}/{}".format(self.s3_bucket, rendered_key)
+        self.log.info("Copying data to [{}] table from S3 path [{}] ".format(self.table, s3_path))
         formatted_sql = StageToRedshiftOperator.copy_sql.format(
             self.table,
             s3_path,
@@ -58,6 +60,7 @@ class StageToRedshiftOperator(BaseOperator):
             self.json_path
         )
         redshift.run(formatted_sql)
+        self.log.info("Table [{}] copy operation DONE.")
 
 
 
