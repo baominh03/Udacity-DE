@@ -2,8 +2,25 @@
 for studying
 
 ## Start from Jan 28,2022
-![image](https://user-images.githubusercontent.com/39981269/160289592-8033e16f-cc03-44f6-8753-0098f2490d38.png)
+![image](https://user-images.githubusercontent.com/39981269/161435316-53427b58-3ee5-468d-bce1-bd8d9cd7e6d8.png)
 
+        
+- Certificate info
+    <details><summary>Click for Certificate</summary>
+    <p>
+
+        Udacity certificate confirmation: https://confirm.udacity.com/JSXSYNGC
+        PDF file:
+
+        [Cert - Data Engineer - Bao Le.pdf](https://github.com/baominh03/Udacity-DE/files/8404873/Cert.-.Data.Engineer.-.Bao.Le.pdf)
+
+        IMG:
+
+        ![image](https://user-images.githubusercontent.com/39981269/161435421-428ef529-d1d1-4c2b-bba0-9a03770529c3.png)
+
+    </p>
+    </details>
+    
 
 - Completed project 1: **Jan 30, 2022** 
     <details><summary>Click for Evidence</summary>
@@ -18,7 +35,8 @@ for studying
 
     </p>
     </details>
-    
+
+
  - Completed project 2: **Feb 4, 2022** 
     <details><summary>Click for Evidence</summary>
     <p>
@@ -58,6 +76,30 @@ for studying
 
     - Code review
      ![review udacity com_ (5)](https://user-images.githubusercontent.com/39981269/160289667-432b2621-5828-4af7-9988-1a46c921f6de.png)
+
+    </p>
+    </details>
+    
+   - Completed project 5: **Mar 31, 2022** 
+    <details><summary>Click for Evidence</summary>
+    <p>
+        ![image](https://user-images.githubusercontent.com/39981269/161435206-f9b51123-da44-4557-a3f3-e2cbac050abd.png)
+
+        - Code review
+        ![review udacity com_ (6)](https://user-images.githubusercontent.com/39981269/161435170-6eec181a-4428-41db-9ff2-3d08caceb1b1.png)
+
+    
+    </p>
+    </details>
+    
+    - Completed project 6: **Apr 3, 2022** 
+    <details><summary>Click for Evidence</summary>
+    <p>
+        ![image](https://user-images.githubusercontent.com/39981269/161435264-9a22f4da-7fb8-4703-8828-a62dab380238.png)
+
+
+        - Code review
+        ![review udacity com_ (7)](https://user-images.githubusercontent.com/39981269/161435288-f6b83055-be14-4784-8913-94224fa0babb.png)
 
     </p>
     </details>
