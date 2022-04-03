@@ -9,14 +9,14 @@ for studying
     <details><summary>Click for Certificate</summary>
     <p>
 
-        Udacity certificate confirmation: https://confirm.udacity.com/JSXSYNGC
-        PDF file:
+     Udacity certificate confirmation: https://confirm.udacity.com/JSXSYNGC
+     
+     PDF file:
+    [Cert - Data Engineer - Bao Le.pdf](https://github.com/baominh03/Udacity-DE/files/8404873/Cert.-.Data.Engineer.-.Bao.Le.pdf)
 
-        [Cert - Data Engineer - Bao Le.pdf](https://github.com/baominh03/Udacity-DE/files/8404873/Cert.-.Data.Engineer.-.Bao.Le.pdf)
+     IMG:
 
-        IMG:
-
-        ![image](https://user-images.githubusercontent.com/39981269/161435421-428ef529-d1d1-4c2b-bba0-9a03770529c3.png)
+    ![image](https://user-images.githubusercontent.com/39981269/161435421-428ef529-d1d1-4c2b-bba0-9a03770529c3.png)
 
     </p>
     </details>
